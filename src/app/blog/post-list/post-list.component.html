@@ -1,0 +1,15 @@
+<span *ngFor="let post of posts">
+<div class="card mt-4">
+  <img class="card-img-top img-fluid" src="assets/images/{{ post.picture }}" alt="{{post.title}}" width="900">
+  <div class="card-body">
+    <h3 class="card-title">{{post.title}}</h3>
+    
+    <h4>Published At: {{post.created_at|date: 'y-M-d'}}</h4>
+    <p class="card-text">{{post.content}}</p>
+    <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+    4.0 stars
+    <a [routerLink]="['/blog', post.id]">Read More</a>
+  </div>
+</div>
+<!-- /.card -->
+</span>
