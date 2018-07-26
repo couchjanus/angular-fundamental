@@ -1,0 +1,29 @@
+<mat-card class="list--scroll">
+  <mat-card-header>
+    <mat-card-title><h1>Blog Posts</h1></mat-card-title>
+  </mat-card-header>
+  <mat-card-actions align="end">
+    <button mat-button [routerLink]="['/admin/post/create']" align="end"><mat-icon>add</mat-icon> Add New Post</button>
+  </mat-card-actions>
+  <mat-card-content>
+    <div fxLayout="column">
+      
+      <div fxFlex="100">
+        <mat-card *ngFor="let post of posts">
+          <mat-list>
+              <mat-list-item>
+                  <a mat-line [routerLink]="['/admin/show', post.id]"> {{ post.title}} </a>
+                  <p mat-line>
+                      <span>{{post.created_at|date: 'yyyy-M-d'}}</span>
+                  </p>
+                  <span><button mat-button (click)='deleteProduct(post.id)'><mat-icon>delete</mat-icon></button></span>
+                  <span><button mat-button [routerLink]="['/admin/edit', post.id]"><mat-icon>edit</mat-icon></button></span>
+              </mat-list-item>
+          </mat-list>
+        </mat-card>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

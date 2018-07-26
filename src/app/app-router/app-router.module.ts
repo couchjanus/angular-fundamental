@@ -19,6 +19,10 @@ const routes: Routes = [
     // lazy loaded
     // loadChildren: '../blog/blog.module#BlogModule'
   },
+  {
+    path: 'admin',
+    loadChildren: '../admin/admin.module#AdminModule'
+  },
   { path: '**', component: NotFoundComponent },
 ];
 

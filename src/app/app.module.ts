@@ -1,37 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { AboutComponent } from './about/about.component';
-import { FooterComponent, HeaderComponent, SharedModule } from './shared';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+
+// Подключаем модули к главному модулю приложения
+import { SharedModule } from './shared';
+import { BlogModule } from './blog/blog.module';
+import { ShopModule } from './shop/shop.module';
+// import { AdminModule } from './admin/admin.module';
 
 // Routing
 import { AppRouterModule } from './app-router/app-router.module';
 // import { routing } from './app-router/app-router.module';
 
-// Подключаем модули к главному модулю приложения
-import { BlogModule } from './blog/blog.module';
-import { ShopModule } from './shop/shop.module';
-
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     HomeComponent,
-    FooterComponent,
-    HeaderComponent,
-    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     AppRouterModule, // Routing
-    // routing,
     BlogModule,
+    BrowserAnimationsModule,
     ShopModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

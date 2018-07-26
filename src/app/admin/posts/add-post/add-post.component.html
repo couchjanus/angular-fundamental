@@ -1,0 +1,41 @@
+<div>
+  <div fxLayout="column">
+    <mat-card class="default">
+      <mat-card-header>
+        <mat-card-title>New Post</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="mb-0 px-1">
+        <form ngClass.gt-xs="px-1" [formGroup]="postForm" novalidate>
+          <div fxLayout="row" fxLayoutWrap="wrap">
+            <div fxFlex="100" fxFlex.gt-md="100" ngClass.gt-md="pr-1">
+              <div>
+                <mat-form-field fxFlex="100">
+                  <input matInput placeholder="Title (disabled)" disabled value="This is a Title">
+                </mat-form-field>
+              </div>
+              
+              <div>
+                <mat-form-field fxFlex="100">
+                  <input matInput placeholder="Title" type="text" formControlName="title">
+                  <mat-error>This field is required</mat-error>
+                </mat-form-field>
+              </div>
+                <div>
+                  <mat-form-field fxFlex="100">
+                    <textarea matInput placeholder="Your product Content..." class="form-control" formControlName="content"></textarea>
+                    <mat-error>This field is required</mat-error>
+                  </mat-form-field>
+                </div>
+              <div>
+                  <mat-card-actions align="end">
+                      <button mat-raised-button color="accent"  >Submit</button>
+                      <button mat-raised-button color="primary" [routerLink]="['/admin/posts']">Back to Post List</button>
+                  </mat-card-actions>
+              </div>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
