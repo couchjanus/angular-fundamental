@@ -1,0 +1,32 @@
+<div>
+  <div fxLayout="column">
+    <mat-card class="default">
+      <mat-card-header>
+        <mat-card-title>New Category</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="mb-0 px-1">
+        <!-- <form ngClass.gt-xs="px-1" #f="ngForm" novalidate (ngSubmit)="onSubmit(f.value)"> -->
+        <form ngClass.gt-xs="px-1" [formGroup]="categoryForm" novalidate (ngSubmit)="onSubmit(categoryForm.value)">
+          <div fxLayout="row" fxLayoutWrap="wrap">
+            <div fxFlex="100" fxFlex.gt-md="100" ngClass.gt-md="pr-1">
+              <div>
+                <mat-form-field fxFlex="100">
+                  <!-- <input matInput placeholder="Name" type="text" name='name' ngModel> -->
+                  <input matInput placeholder="Name" type="text" name='name' [formControl]="categoryForm.controls['name']">
+                  <mat-error>This field is required</mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                  <mat-card-actions align="end">
+                      <button mat-raised-button color="accent" type="submit"  class="btn btn-primary">Create Category</button>
+                      <button mat-raised-button color="primary" [routerLink]="['/admin/categories']">Back to Categories List</button>
+                  </mat-card-actions>
+              </div>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+ 

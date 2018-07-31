@@ -12,7 +12,6 @@ import { ShopModule } from './shop/shop.module';
 
 // Routing
 import { AppRouterModule } from './app-router/app-router.module';
-// import { routing } from './app-router/app-router.module';
 
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';

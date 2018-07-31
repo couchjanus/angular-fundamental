@@ -1,9 +1,16 @@
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { DashboardComponent } from '../../admin/dashboard/dashboard.component';
 import { LayoutComponent } from '../../admin/layout/layout.component';
 import { ErrorComponent } from '../../admin/error/error.component';
 import { PostsComponent } from '../../admin/posts/posts.component';
 import { AddPostComponent } from '../../admin/posts/add-post/add-post.component';
+
+import { CategoryComponent } from '../../admin/catalog/category/category.component';
+
+import { AddCategoryComponent } from '../../admin/catalog/category/add-category/add-category.component';
+
+import { EditCategoryComponent } from '../../admin/catalog/category/edit-category/edit-category.component';
+
 export const routes: Routes = [
     {
         path: '',
@@ -17,6 +24,9 @@ export const routes: Routes = [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'posts', component: PostsComponent },
             { path: 'post/create', component: AddPostComponent },
+            { path: 'categories', component: CategoryComponent },
+            { path: 'categories/create', component: AddCategoryComponent },
+            { path: 'categories/edit/:name', component: EditCategoryComponent },
         ]
     },
     {
