@@ -1,0 +1,26 @@
+<mat-card class="list--scroll">
+  <mat-card-header>
+    <mat-card-title><h1>Users</h1></mat-card-title>
+  </mat-card-header>
+  <mat-card-actions align="end">
+    <button mat-button [routerLink]="['/admin/users/create']" align="end"><mat-icon>add</mat-icon> Add New User</button>
+  </mat-card-actions>
+  <mat-card-content>
+    <div fxLayout="column">
+      
+      <div fxFlex="100">
+        <mat-card *ngFor="let user of users">
+          <mat-list>
+              <mat-list-item>
+                  <a mat-line [routerLink]="['/admin/users/edit', user.id]"> {{ user.email}} </a>
+                  <span><button mat-button (click)='delete(user)'><mat-icon>delete</mat-icon></button></span>
+                  <span><button mat-button [routerLink]="['/admin/users/edit', user.id]"><mat-icon>edit</mat-icon></button></span>
+              </mat-list-item>
+          </mat-list>
+        </mat-card>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

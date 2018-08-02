@@ -15,12 +15,18 @@ import { AppRouterModule } from './app-router/app-router.module';
 
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
+import { EmailValidatorDirective } from './directives';
+import { AlertService } from './services';
+
+import { AlertComponent } from './directives';
 
 @NgModule({
   declarations: [
     AppComponent,
+    EmailValidatorDirective,
     AboutComponent,
     HomeComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,7 @@ import { HomeComponent } from './home/home.component';
     ShopModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

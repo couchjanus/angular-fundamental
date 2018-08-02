@@ -21,6 +21,9 @@ import { CategoryComponent } from './catalog/category/category.component';
 import { AddCategoryComponent } from './catalog/category/add-category/add-category.component';
 import { EditCategoryComponent } from './catalog/category/edit-category/edit-category.component';
 import { DestroyCategoryComponent } from './catalog/category/destroy-category/destroy-category.component';
+import { UsersComponent } from './users/users.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 @NgModule({
   imports: [
@@ -43,6 +46,9 @@ import { DestroyCategoryComponent } from './catalog/category/destroy-category/de
     CategoryComponent,
     AddCategoryComponent,
     EditCategoryComponent,
-    DestroyCategoryComponent]
+    DestroyCategoryComponent,
+    UsersComponent,
+    AddUserComponent,
+    EditUserComponent]
 })
 export class AdminModule { }

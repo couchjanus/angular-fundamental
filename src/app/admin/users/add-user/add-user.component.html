@@ -1,0 +1,55 @@
+<div>
+  <div fxLayout="column">
+    <mat-card class="default">
+      <mat-card-header>
+        <mat-card-title>New User</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="mb-0 px-1">
+        
+        <form ngClass.gt-xs="px-1" [formGroup]="userForm" novalidate (ngSubmit)="onSubmit(userForm.value)">
+          <div fxLayout="row" fxLayoutWrap="wrap">
+            <div fxFlex="100" fxFlex.gt-md="100" ngClass.gt-md="pr-1">
+              <div>
+                <mat-form-field fxFlex="100">
+                  <input matInput placeholder="Email" type="email" name='email' [formControl]="userForm.controls['email']" required pattern="[^ @]*@[^ @]*">
+                  <mat-error *ngIf="userForm.controls['email'].errors && (userForm.controls['email'].dirty || userForm.controls['email'].touched)">
+                      <p *ngIf="userForm.controls['email'].errors.required">Email is required</p>
+                      <p *ngIf="userForm.controls['email'].errors.pattern">Email must contain at least the @ character</p>
+                      <p *ngIf="userForm.controls['email'].errors.appValidateEmail">Email required domain</p>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field fxFlex="100">
+                  <input matInput placeholder="password" type="password" name='password' [formControl]="userForm.controls['password']">
+                  <mat-error>
+                    This field is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field fxFlex="100">
+                  <input matInput placeholder="firstName" type="test" name='firstName' [formControl]="userForm.controls['firstName']">
+                  <mat-error>This field is required</mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field fxFlex="100">
+                  <input matInput placeholder="lastName" type="test" name='lastName' [formControl]="userForm.controls['lastName']">
+                  <mat-error>This field is required</mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                  <mat-card-actions align="end">
+                      <button mat-raised-button color="accent" type="submit"  class="btn btn-primary">Create User</button>
+                      <button mat-raised-button color="primary" [routerLink]="['/admin/users']">Back to Users List</button>
+                  </mat-card-actions>
+              </div>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+ 

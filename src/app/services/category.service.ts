@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Category } from '../models/category';
+import { Category } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  private url = 'http://localhost:3000';
+  private url = 'http://localhost:4200';
 
   public getAllCategories() {
     return this.http

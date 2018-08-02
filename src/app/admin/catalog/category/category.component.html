@@ -14,7 +14,7 @@
               <mat-list-item>
                   <a mat-line [routerLink]="['/admin/cxategories/edit', category.id]"> {{ category.name}} </a>
                   <span><button mat-button (click)='deleteCategory(category)'><mat-icon>delete</mat-icon></button></span>
-                  <span><button mat-button [routerLink]="['/admin/categories/edit', category.name]"><mat-icon>edit</mat-icon></button></span>
+                  <span><button mat-button [routerLink]="['/admin/categories/edit', category.id]"><mat-icon>edit</mat-icon></button></span>
               </mat-list-item>
           </mat-list>
         </mat-card>

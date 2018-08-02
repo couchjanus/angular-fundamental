@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: '../admin/admin.module#AdminModule'
   },
+  {
+    path: 'auth',
+    loadChildren: '../user/user.module#UserModule'
+  },
   { path: '**', component: NotFoundComponent },
 ];
 
