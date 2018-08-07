@@ -21,6 +21,23 @@
               <li class="nav-item">
                 <a class="nav-link" routerLink="/contact">Contact</a>
               </li>
+              <!-- negated variable to achieve "if not" -->
+              <!-- <span *ngIf="!isLoggedIn">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/auth/logout">Sign Out</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/auth/profile">Profile</a>
+              </li>
+             </span> -->
+             <span *ngIf="isLoggedIn">
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/auth/register">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/auth/login">Sign In</a>
+                </li>
+              </span>
             </ul>
           </div>
         </div>

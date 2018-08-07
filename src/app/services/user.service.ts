@@ -32,10 +32,11 @@ export class UserService {
     }
 
     public register(user: User) {
-        return this.http.post(`${this.apiUrl}/users/register`, JSON.stringify(user), this._options);
+        return this.http.post(`${this.apiUrl}/users`, JSON.stringify(user), this._options);
     }
 
     public delete(id: number) {
         return this.http.delete(`${this.apiUrl}/users/${id}`);
     }
+
 }

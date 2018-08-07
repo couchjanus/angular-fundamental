@@ -175,3 +175,16 @@ a { text-decoration: none; }
 perfect-scrollbar > .ps.ps--active-y>.ps__rail-y {
   left: auto !important;
 }
+
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }

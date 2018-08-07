@@ -1,36 +1,43 @@
-import { Directive, forwardRef } from '@angular/core';
-import { NG_VALIDATORS, FormControl } from '@angular/forms';
-
-// function validateEmailFactory(emailBlackList: EmailBlackList) {
-function validateEmailFactory() {
-  return (c: FormControl) => {
-    const EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
-
-    return EMAIL_REGEXP.test(c.value) ? null : {
-      appValidateEmail: {
-        valid: false
-      }
-    };
-  };
-}
+import { Directive, forwardRef, Input } from '@angular/core';
+import { Validator, FormControl, NG_VALIDATORS } from '@angular/forms';
 
 @Directive({
-  selector: '[appValidateEmail][ngModel],[appValidateEmail][formControl]',
-  providers: [
-    { provide: NG_VALIDATORS, useExisting: forwardRef(() => EmailValidatorDirective), multi: true }
-  ]
+    providers: [
+        {
+            multi: true,
+            provide: NG_VALIDATORS,
+            useExisting: forwardRef(() => EmailValidatorDirective),
+        },
+    ],
+    selector: '[appEmailValidator]',
 })
-export class EmailValidatorDirective {
+export class EmailValidatorDirective implements Validator {
 
-  validator: Function;
+    /* tslint:disable */
+    private emailRegex =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    /* tslint:enable */
 
-  // constructor(emailBlackList: EmailBlackList) {
-  //   this.validator = validateEmailFactory(emailBlackList);
-  // }
-  constructor() {
-    this.validator = validateEmailFactory();
-  }
-  validate(c: FormControl) {
-    return this.validator(c);
-  }
+    @Input()
+    public emailMessage: string;
+
+    constructor() {}
+
+    public validate(control: FormControl): {} {
+        if (!control || !control.value) {
+            return null;
+        }
+
+        return this.emailRegex.test(control.value) ? null : this.getValidationMessage();
+    }
+
+    private getValidationMessage() {
+        const message = (this.emailMessage) ? this.emailMessage : 'Please provide a valid email adress';
+        return {
+            email: {
+                message: message,
+                order: 1,
+            }
+        };
+    }
 }

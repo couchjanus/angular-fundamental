@@ -212,6 +212,7 @@
   "users": [
     {
       "id": 1,
+      "username": "admin",
       "email": "admin@my.com",
       "password": "qwerty",
       "isAdmin": true,
@@ -221,7 +222,7 @@
     },
     {
       "id": 2,
-      "name": "",
+      "username": "test1",
       "email": "test1@my.com",
       "password": "ghbdtn",
       "isAdmin": false,
@@ -231,13 +232,23 @@
     },
     {
       "id": 3,
-      "name": "",
+      "username": "tree",
       "email": "tree@my.com",
       "password": "ghbdtn",
       "isAdmin": false,
       "firstName": "Tree",
       "lastName": "Stan",
       "createdAt": 1533213952213
+    },
+    {
+      "id": 4,
+      "username": "jdoor",
+      "email": "jdo@my.cat",
+      "password": "ghbdtn",
+      "isAdmin": false,
+      "firstName": "Jojn",
+      "lastName": "Doe",
+      "createdAt": 1533487323969
     }
   ]
 }

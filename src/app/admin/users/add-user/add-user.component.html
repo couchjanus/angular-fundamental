@@ -11,37 +11,55 @@
             <div fxFlex="100" fxFlex.gt-md="100" ngClass.gt-md="pr-1">
               <div>
                 <mat-form-field fxFlex="100">
-                  <input matInput placeholder="Email" type="email" name='email' [formControl]="userForm.controls['email']" required pattern="[^ @]*@[^ @]*">
-                  <mat-error *ngIf="userForm.controls['email'].errors && (userForm.controls['email'].dirty || userForm.controls['email'].touched)">
-                      <p *ngIf="userForm.controls['email'].errors.required">Email is required</p>
-                      <p *ngIf="userForm.controls['email'].errors.pattern">Email must contain at least the @ character</p>
-                      <p *ngIf="userForm.controls['email'].errors.appValidateEmail">Email required domain</p>
+                  <input matInput placeholder="Email" type="email" name='email' formControlName="email" required>
+                  <mat-error *ngFor="let validation of create_validation_messages.email">
+                  <mat-error *ngIf="userForm.get('email').hasError(validation.type) && (userForm.get('email').dirty || userForm.get('email').touched)">
+                    {{validation.message}}
                   </mat-error>
+                </mat-error>
                 </mat-form-field>
               </div>
               <div>
                 <mat-form-field fxFlex="100">
-                  <input matInput placeholder="password" type="password" name='password' [formControl]="userForm.controls['password']">
-                  <mat-error>
-                    This field is required
+                  <input matInput placeholder="username" type="text" name='username' formControlName="username">
+                  
+                  <mat-error *ngFor="let validation of create_validation_messages.username">
+                  <mat-error  *ngIf="userForm.get('username').hasError(validation.type) && (userForm.get('username').dirty || userForm.get('username').touched)">
+                    {{validation.message}}</mat-error>
+                </mat-error>
+                </mat-form-field>
+              </div>
+ 
+              <div formGroupName="matching_passwords">
+                <mat-form-field  fxFlex="100">
+                  <input matInput type="password" placeholder="Password" formControlName="password" required>
+                  <mat-error *ngFor="let validation of create_validation_messages.password">
+                    <mat-error class="error-message" *ngIf="userForm.get('matching_passwords').get('password').hasError(validation.type) && (userForm.get('matching_passwords').get('password').dirty || userForm.get('matching_passwords').get('password').touched)">{{validation.message}}</mat-error>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field  fxFlex="100">
+                  <input matInput type="password" placeholder="Confirm Password" formControlName="confirm_password"  [errorStateMatcher]="parentErrorStateMatcher" required>
+                  <mat-error *ngFor="let validation of create_validation_messages.confirm_password">
+                    <mat-error class="error-message" *ngIf="(userForm.get('matching_passwords').get('confirm_password').hasError(validation.type)|| userForm.get('matching_passwords').hasError(validation.type)) && (userForm.get('matching_passwords').get('confirm_password').dirty || userForm.get('matching_passwords').get('confirm_password').touched)">{{validation.message}}</mat-error>
                   </mat-error>
                 </mat-form-field>
               </div>
+
               <div>
                 <mat-form-field fxFlex="100">
-                  <input matInput placeholder="firstName" type="test" name='firstName' [formControl]="userForm.controls['firstName']">
+                  <input matInput placeholder="firstName" type="text" name='firstName' formControlName="firstName">
                   <mat-error>This field is required</mat-error>
                 </mat-form-field>
               </div>
               <div>
                 <mat-form-field fxFlex="100">
-                  <input matInput placeholder="lastName" type="test" name='lastName' [formControl]="userForm.controls['lastName']">
+                  <input matInput placeholder="lastName" type="text" name='lastName' formControlName="lastName">
                   <mat-error>This field is required</mat-error>
                 </mat-form-field>
               </div>
               <div>
                   <mat-card-actions align="end">
-                      <button mat-raised-button color="accent" type="submit"  class="btn btn-primary">Create User</button>
+                      <button mat-raised-button color="accent" type="submit"  class="btn btn-primary" [disabled]="!userForm.valid">Create User</button>
                       <button mat-raised-button color="primary" [routerLink]="['/admin/users']">Back to Users List</button>
                   </mat-card-actions>
               </div>

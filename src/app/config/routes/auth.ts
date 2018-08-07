@@ -1,25 +1,10 @@
 import { Routes } from '@angular/router';
 
-import { RegisterComponent } from '../../user';
-
+import { RegisterComponent, LoginComponent, ProfileComponent } from '../../user';
+import { AuthGuard } from '../../guards';
 
 export const routes: Routes = [
     { path: 'register', component: RegisterComponent },
-    // {
-    //     path: '',
-    //     redirectTo: 'profile',
-    //     pathMatch: 'full'
-    // },
-    // {
-    //     // path: '',
-    //     // component: LayoutComponent,
-    //     children : [
-    //         // { path: 'profile', component: DashboardComponent },
-    //         { path: 'register', component: RegisterComponent },
-    //     ]
-    // },
-    // {
-    //     path: 'error',
-    //     component: ErrorComponent
-    // },
+    { path: 'login', component: LoginComponent },
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 ];

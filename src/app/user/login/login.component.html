@@ -1,0 +1,55 @@
+<div class="alert alert-info">
+</div>
+<h1 class="text-center mt-5">Sign in</h1>
+<div class="container pt-3">
+  <div class="row justify-content-sm-center">
+    <div class="col-sm-10 col-md-6">
+      <div class="card border-info">
+        <div class="card-header">Sign in to continue</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <img src="https://placeimg.com/128/128/tech/sepia">
+              <h4 class="text-center">Janus & Nicon Ltd</h4>
+            </div>
+            <div class="col-md-8">
+              <form [formGroup]="loginForm" class="form-signin">
+                <input type="text" formControlName="username" placeholder="Your username" class="form-control mb-2" required autofocus>
+                <div
+                    class="input-errors"
+                    *ngIf="(loginForm.get('username').invalid && loginForm.get('username').touched) || showInputErrors"
+                  >
+                    <div *ngIf="loginForm.get('username').hasError('required')">
+                      Please enter your username
+                    </div>
+                </div>
+                <input type="password" formControlName="password" placeholder="Your password" class="form-control mb-2" required>
+                <div
+                  class="input-errors"
+                  *ngIf="(loginForm.get('password').invalid && loginForm.get('password').touched) || showInputErrors"
+                >
+                  <div *ngIf="loginForm.get('password').hasError('required')">
+                    Please enter your password
+                  </div>
+                </div>
+                <div class="sign-in-error" *ngIf="hasFailed">
+                  Invalid username and password.
+                </div>
+                <button (click)="onSubmit()" [disabled]="isBusy" class="btn btn-lg btn-primary btn-block mb-1">
+                    <ng-template [ngIf]="!isBusy">Sign in</ng-template>
+                    <ng-template [ngIf]="isBusy">Signing in, please wait...</ng-template>
+                </button>
+                <label class="checkbox float-left">
+                  <input type="checkbox" value="remember-me">
+                  Remember me
+                </label>
+                <a href="#" class="float-right">Need help?</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a routerLink="/auth/register" class="float-right">Create an account </a>
+    </div>
+  </div>
+</div>
