@@ -16,49 +16,37 @@ server.use(middlewares);
 server.use(bodyParser.json());
 
 // Handle sign-in requests
-server.post('/login', (req, res) => {
+server.post('/login', (request, response) => {
     // find if any user matches login credentials
-    let user = fetch('http://127.0.0.1:3000/users')
-    .then(function(users) {
-        // result is parsed body of json
-        let filteredUsers = Object.keys(users).filter(user => {
-            return user.username === req.body.username && user.password === req.body.password;
-        });
-        if (filteredUsers.length) {
+    fetch('http://127.0.0.1:3000/users').then(function(data) {
+        if(data.ok) {
+          data.json().then(function(users) {
+            let filteredUsers = users.filter(user => {
+                return user.username === request.body.username && user.password === request.body.password;
+            });
+            console.log(request.body.username, request.body.password);
+            if (filteredUsers.length) {
                 // if login details are valid return 200 OK with user details and fake jwt token
-                return filteredUsers[0];
+                // return of(new HttpResponse({ status: 200, body: response.json(body) }));
+                response.json({
+                    id: filteredUsers[0].id,
+                    username: filteredUsers[0].username,
+                    isAdmin: filteredUsers[0].isAdmin,
+                    firstName: filteredUsers[0].firstName,
+                    lastName: filteredUsers[0].lastName,
+                    token: jwtToken
+                });
+            } else {
+                // else return 400 bad request
+                response.send(422, 'Username or password is incorrect');
+            }
+          });
+        } else {
+          console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
         }
     });
-    
-    if (user) {
-        res.json({
-            id: user.id,
-            username: user.username,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            token: jwtToken
-        });
-            // return of(new HttpResponse({ status: 200, body: response.json(body) }));
-    } else {
-        // else return 400 bad request
-        res.send(422, 'Username or password is incorrect');
-    }
-    });
-   
-
-// // Handle sign-in requests
-// server.post('/sign-in', (req, res) => {
-//   const username = req.body.username;
-//   const password = req.body.password;
-//   if(username === 'demo' && password === 'demo') {
-//     res.json({
-//       name: 'SitePoint Reader',
-//       token: jwtToken
-//     });
-//   }
-//   res.send(422, 'Invalid username and password');
-
-
+});
+ 
 // Protect other routes
 // server.use((req, res, next) => {
 //   if (isAuthorized(req)) {
@@ -77,39 +65,6 @@ server.use(router);
 server.listen(3000, () => {
   console.log('JSON Server is running');
 });
-
-
-// fetch('http://127.0.0.1:3000/users')
-//   .then(function(response) {
-//     response.json().then(function(users) {
-//       // result is parsed body of foo.json
-//       let filteredUsers = users.filter(user => {
-//         // return user.username === request.body.username && user.password === request.body.password;
-    
-//         return user.username === 'admin' && user.password === 'qwerty';
-//     });
-    
-//     if (filteredUsers.length) {
-//         // if login details are valid return 200 OK with user details and fake jwt token
-//         let user = filteredUsers[0];
-//         let body = {
-//             id: user.id,
-//             username: user.username,
-//             firstName: user.firstName,
-//             lastName: user.lastName,
-//             token: jwtToken
-//         };
-    
-//         console.log(body);
-//     } else {
-//         // else return 400 bad request
-//         console.log('Username or password is incorrect');
-//     }
-    
-
-//     });
-// });
-
 
 // Check whether request is allowed
 function isAuthorized(req) {

@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   public returnUrl: string;
   public error = '';
 
-  @Output() loggedIn = new EventEmitter<boolean>();
+  // @Output() loggedIn = new EventEmitter<boolean>();
 
   constructor(
     private _auth: AuthService,
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
     this.hasFailed = false;
 
     this.loading = true;
-    this.loggedIn.emit(true);
+    // this.loggedIn.emit(true);
     this._auth.signIn(this.f.username.value, this.f.password.value)
         .pipe(first())
         .subscribe(
