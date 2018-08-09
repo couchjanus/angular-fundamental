@@ -13,6 +13,7 @@ import { EditCategoryComponent } from '../../admin/catalog/category/edit-categor
 
 import { UsersComponent, AddUserComponent, EditUserComponent } from '../../admin';
 
+import { RoleGuard } from '../../guards';
 
 export const routes: Routes = [
     {
@@ -24,13 +25,17 @@ export const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children : [
-            { path: 'dashboard', component: DashboardComponent },
+            { path: 'dashboard', component: DashboardComponent, canActivate: [RoleGuard],
+            data: {
+                expectedRole: 'admin'
+            } },
             { path: 'posts', component: PostsComponent },
             { path: 'post/create', component: AddPostComponent },
             { path: 'categories', component: CategoryComponent },
             { path: 'categories/create', component: AddCategoryComponent },
             { path: 'categories/edit/:id', component: EditCategoryComponent },
-            { path: 'users', component: UsersComponent },
+            { path: 'users', component: UsersComponent, canActivate: [RoleGuard],
+            data: { expectedRole: 'admin' } },
             { path: 'users/create', component: AddUserComponent },
             { path: 'users/edit/:id', component: EditUserComponent },
         ]

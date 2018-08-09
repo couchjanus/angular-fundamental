@@ -14,13 +14,13 @@
             </div>
             <div class="col-md-8">
               <form [formGroup]="loginForm" class="form-signin">
-                <input type="text" formControlName="username" placeholder="Your username" class="form-control mb-2" required autofocus>
+                <input type="email" formControlName="email" placeholder="Your email" class="form-control mb-2" required autofocus>
                 <div
                     class="input-errors"
-                    *ngIf="(loginForm.get('username').invalid && loginForm.get('username').touched) || showInputErrors"
+                    *ngIf="(loginForm.get('email').invalid && loginForm.get('email').touched) || showInputErrors"
                   >
-                    <div *ngIf="loginForm.get('username').hasError('required')">
-                      Please enter your username
+                    <div *ngIf="loginForm.get('email').hasError('required')">
+                      Please enter your email
                     </div>
                 </div>
                 <input type="password" formControlName="password" placeholder="Your password" class="form-control mb-2" required>
@@ -33,7 +33,7 @@
                   </div>
                 </div>
                 <div class="sign-in-error" *ngIf="hasFailed">
-                  Invalid username and password.
+                  Invalid email or password.
                 </div>
                 <button (click)="onSubmit()" [disabled]="isBusy" class="btn btn-lg btn-primary btn-block mb-1">
                     <ng-template [ngIf]="!isBusy">Sign in</ng-template>

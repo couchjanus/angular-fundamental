@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService, AuthService } from '../../services';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -22,8 +22,6 @@ export class LoginComponent implements OnInit {
   public returnUrl: string;
   public error = '';
 
-  // @Output() loggedIn = new EventEmitter<boolean>();
-
   constructor(
     private _auth: AuthService,
     private _fb: FormBuilder,
@@ -32,10 +30,9 @@ export class LoginComponent implements OnInit {
     private _route: ActivatedRoute,
   ) {}
 
-
   ngOnInit() {
     this.loginForm = this._fb.group({
-        username: ['', Validators.required],
+        email: ['', Validators.required],
         password: ['', Validators.required]
     });
 
@@ -43,15 +40,21 @@ export class LoginComponent implements OnInit {
     this._auth.logout();
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/auth/profile';
+
+    //   // Get the query params
+    //   this.route.queryParams
+    //     .subscribe(params => this.return = params['return'] || '/auth/profile');
+
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
-
     // Make sure form values are valid
     // stop here if form is invalid
     if (this.loginForm.invalid) {
@@ -62,13 +65,13 @@ export class LoginComponent implements OnInit {
     // Reset status
     this.isBusy = true;
     this.hasFailed = false;
-
     this.loading = true;
-    // this.loggedIn.emit(true);
-    this._auth.signIn(this.f.username.value, this.f.password.value)
+
+    if (this.f.email.value && this.f.password.value) {
+      this._auth.signIn(this.f.email.value, this.f.password.value)
         .pipe(first())
         .subscribe(
-            data => {
+            () => {
               this._alertService.success('Login successful', true);
               this._router.navigate([this.returnUrl]);
             },
@@ -79,5 +82,6 @@ export class LoginComponent implements OnInit {
                 this.hasFailed = true;
                 this._alertService.error(error);
             });
+    }
   }
 }

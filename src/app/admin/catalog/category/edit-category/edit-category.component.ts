@@ -33,7 +33,6 @@ export class EditCategoryComponent implements OnInit {
           alert(error);
         });
   }
-
   ngOnInit() {
     this.categoryForm = this.fb.group({
       id: [],

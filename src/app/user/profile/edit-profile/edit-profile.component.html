@@ -1,0 +1,48 @@
+<p>
+  edit-profile works!
+</p>
+<p>{{ prop1.firstName }} {{ prop1.lastName }}</p>
+
+<h2>{{ prop1.firstName | uppercase}} Details</h2>
+<div><span>id: </span>{{ prop1.id}}</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="prop1.username" placeholder="name">
+  </label>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <th>User Name</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ prop1.username }}</td>
+      <td>{{ prop1.firstName }}</td>
+      <td>{{ prop1.lastName }}</td>
+      <td><button class="btn btn-sm btn-default" (click)="editProfile.emit(p)">Edit</button></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<form [formGroup]="userForm" (ngSubmit)="onUserFormSubmit()">
+  <input type="hidden" formControlName="id">
+  <div class="form-group">
+    <label for="username">User Name</label>
+    <input type="text" class="form-control" id="username" placeholder="User Name" formControlName="username">
+  </div>
+  <div class="form-group">
+    <label for="first">First Name</label>
+    <input type="text" class="form-control" id="first" placeholder="Firstname" formControlName="firstName">
+  </div>
+  <div class="form-group">
+    <label for="last">Last Name</label>
+    <input type="text" class="form-control" id="last" placeholder="Last Name" formControlName="lastName">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
