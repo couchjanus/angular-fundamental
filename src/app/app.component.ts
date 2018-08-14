@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+// import { AngularFireDatabase } from 'angularfire2/database';
+// import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,10 +8,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-  loggedIn: boolean;
 
-  isLogged(logged: boolean) {
-    this.loggedIn = logged;
-  }
+  // title = 'Angular Firebase CRUD';
+  // description = 'Angular Firebase Application';
+
+  // itemValue = '';
+  // items: Observable<any[]>;
+
+  // constructor(public db: AngularFireDatabase) {
+  //   this.items = db.list('items').valueChanges();
+  // }
+
+  // onSubmit() {
+  //   this.db.list('/items').push({ content: this.itemValue });
+  //   this.itemValue = '';
+  // }
 }

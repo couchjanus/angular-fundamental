@@ -1,9 +1,11 @@
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from '../home/home.component';
-import { AboutComponent } from '../about/about.component';
-import { NotFoundComponent } from '../not-found/not-found.component';
+import { Routes } from '@angular/router';
+import {
+  HomeComponent,
+  AboutComponent,
+  NotFoundComponent
+ } from '../';
 
-import { BlogModule } from '../blog/blog.module';
+// import { BlogModule } from '../blog/blog.module';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,6 +16,11 @@ export const routes: Routes = [
       // loadChildren: () => BlogModule
       // lazy loaded
       loadChildren: '../blog/blog.module#BlogModule'
+    },
+    {
+      path: 'shop',
+      // lazy loaded
+      loadChildren: '../shop/shop.module#ShopModule'
     },
     { path: '**', component: NotFoundComponent },
 ];

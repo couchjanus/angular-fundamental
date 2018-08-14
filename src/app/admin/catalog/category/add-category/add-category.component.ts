@@ -52,13 +52,6 @@ export class AddCategoryComponent implements OnInit {
   //   );
   // }
 
-  // onSubmit(form: any): void {
-  //   console.log('You submitted new cats value:', form);
-  // }
-
-  // onSubmit(value: string): void {
-  //   console.log('You submitted new cats value:', value);
-  // }
 
   ngOnInit() {
     this.categoryForm = this.fb.group({

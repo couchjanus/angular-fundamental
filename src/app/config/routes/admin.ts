@@ -11,7 +11,13 @@ import { AddCategoryComponent } from '../../admin/catalog/category/add-category/
 
 import { EditCategoryComponent } from '../../admin/catalog/category/edit-category/edit-category.component';
 
-import { UsersComponent, AddUserComponent, EditUserComponent } from '../../admin';
+import {
+    UsersComponent,
+    AddUserComponent,
+    EditUserComponent,
+    CatalogComponent,
+    CreateProductComponent
+ } from '../../admin';
 
 import { RoleGuard } from '../../guards';
 
@@ -38,6 +44,8 @@ export const routes: Routes = [
             data: { expectedRole: 'admin' } },
             { path: 'users/create', component: AddUserComponent },
             { path: 'users/edit/:id', component: EditUserComponent },
+            { path: 'products', component: CatalogComponent },
+            { path: 'products/create', component: CreateProductComponent },
         ]
     },
     {

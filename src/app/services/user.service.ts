@@ -39,4 +39,20 @@ export class UserService {
         return this.http.delete(`${this.apiUrl}/users/${id}`);
     }
 
+    public getProfile(id: String) {
+        return this.http.get(`${this.apiUrl}/users/${id?id:localStorage.getItem('currentUser')}`, this._options);
+    }
+
+    public getProfiles() {
+        return this.http.get(`${this.apiUrl}/users`, this._options);
+    }
+
+    public updateProfile(user: User, callback) {
+        return this.http.post<User>(`${this.apiUrl}/users/${user.id}`, JSON.stringify(user), this._options).subscribe(res => {
+          callback(res);
+        }, err => {
+          callback(err);
+        });
+    }
+
 }

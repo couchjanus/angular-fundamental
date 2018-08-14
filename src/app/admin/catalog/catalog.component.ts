@@ -1,7 +1,8 @@
 import { Component, OnInit,  ViewChild } from '@angular/core';
+import { map } from 'rxjs/operators';
 
-// import { Post } from '../../models/post';
-// import { PostService } from '../../services/post.service';
+import { ProductService } from '../../services';
+import { Product } from '../../models';
 
 @Component({
   selector: 'app-catalog',
@@ -10,11 +11,25 @@ import { Component, OnInit,  ViewChild } from '@angular/core';
 })
 export class CatalogComponent implements OnInit {
 
-  // posts: Post[] = [];
+  products: any;
 
-  // constructor(private _postService: PostService) {}
+  constructor(private _productService: ProductService) { }
 
   ngOnInit() {
+    this.getProductsList();
+  }
 
+  getProductsList() {
+    this._productService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    ).subscribe(products => {
+      this.products = products;
+    });
+  }
+
+  delete(product: Product): void {
+    this._productService.delete(product.title);
   }
 }

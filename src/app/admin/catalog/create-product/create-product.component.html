@@ -1,0 +1,49 @@
+<div>
+    <div fxLayout="column">
+      <mat-card class="default">
+        <mat-card-header>
+          <mat-card-title>New Product</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="mb-0 px-1">
+          <form ngClass.gt-xs="px-1" novalidate (ngSubmit)="onSubmit()">
+            <div fxLayout="row" fxLayoutWrap="wrap">
+              <div fxFlex="100" fxFlex.gt-md="100" ngClass.gt-md="pr-1">
+                <div>
+                  <mat-form-field fxFlex="100">
+                    <input matInput placeholder="title" id="title" type="text"  [(ngModel)]="product.title" name="title">
+                    <mat-error>This field is required</mat-error>
+                  </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field fxFlex="100">
+                      <input matInput placeholder="price" id="price" type="text" [(ngModel)]="product.price" name="price">
+                      <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field fxFlex="100">
+                      <input matInput placeholder="category" id="category" type="text" [(ngModel)]="product.category" name="category">
+                      <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field fxFlex="100">
+                      imageUrl: string;
+                      <input matInput placeholder="imageUrl" id="imageUrl" type="text"  [(ngModel)]="product.imageUrl" name="imageUrl">
+                      <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-card-actions align="end">
+                        <button mat-raised-button color="accent" type="submit"  class="btn btn-primary">Create Product</button>
+                        <button mat-raised-button color="primary" [routerLink]="['/admin/products']">Back to Products List</button>
+                    </mat-card-actions>
+                </div>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+   

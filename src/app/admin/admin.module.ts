@@ -24,6 +24,7 @@ import { DestroyCategoryComponent } from './catalog/category/destroy-category/de
 import { UsersComponent } from './users/users.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { CreateProductComponent } from './catalog/create-product/create-product.component';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { EditUserComponent } from './users/edit-user/edit-user.component';
     DestroyCategoryComponent,
     UsersComponent,
     AddUserComponent,
-    EditUserComponent]
+    EditUserComponent,
+    CreateProductComponent]
 })
 export class AdminModule { }
