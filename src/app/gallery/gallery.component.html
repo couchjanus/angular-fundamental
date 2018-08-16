@@ -1,0 +1,49 @@
+<app-header></app-header>
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-3">
+        <h2 class="my-4" [ngClass]="{h2Style:true}">Gallery Page</h2>
+          
+        <div class="list-group" [class.groupStyle]="true">
+          <a href="#" class="list-group-item active">Category 1</a>
+          <a href="#" class="list-group-item" [class.groupStyle]="false" [class.itemStyle]="true">Category 2</a>
+          <a href="#" class="list-group-item">Category 3</a>
+        </div>
+      </div>
+      <!-- /.col-lg-3 -->
+
+      <div class="col-lg-9">
+             
+          <h2 class="display-4 text-center" [ngClass]="{headerStyle:true}">Your Images </h2>
+          <hr>
+          <div class="masonry">
+              <div class="preview" *ngFor="let image of images | async">
+                <img [src] = "image.imageURL" [ngClass]="{invisible: visibility}">
+                <button (click)="toggle()">Toggle</button>
+              </div>
+          </div>    
+          
+          <div [ngStyle]="{'font-size':'1.4em', 'color':'#bb00bb', 'font-family':'Verdana'}">
+              <h1>Hello FireBase Storage!</h1>
+              <p [ngStyle]="{'font-size':'1.3em', 'color':'#00bbbb'}">
+                  Firebase is a mobile and web application development platform developed by Google.
+              </p>
+              
+          </div>
+
+          
+
+      </div>
+      <!-- /.col-lg-9 -->
+
+    </div>
+
+  </div>
+  <!-- /.container -->
+  <app-footer></app-footer>
+
+
+

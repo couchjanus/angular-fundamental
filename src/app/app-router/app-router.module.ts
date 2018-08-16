@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {
   HomeComponent,
   AboutComponent,
-  NotFoundComponent
+  NotFoundComponent,
+  GalleryComponent
  } from '../';
 
 import { BlogModule } from '../blog/blog.module';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent},
+  { path: 'gallery', component: GalleryComponent},
   {
     path: 'blog',
     loadChildren: () => BlogModule

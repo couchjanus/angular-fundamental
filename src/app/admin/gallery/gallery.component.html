@@ -1,0 +1,7 @@
+        <h2 class="display-4 text-center">Your Images </h2>
+        <hr>
+        <div class="masonry">
+            <div class="preview" *ngFor="let image of images | async">
+              <img [src] = "image.imageURL">
+            </div>
+        </div>

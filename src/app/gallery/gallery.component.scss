@@ -1,0 +1,38 @@
+
+.item{
+    width: 320px;
+    height: 260px;
+    padding:10px;
+    background-origin: content-box;
+    cursor: pointer
+}
+
+img {
+
+  max-width: 100%;
+}
+
+
+.headerStyle{
+  font-size:4rem; 
+  font-family:Verdana;
+  color: crimson;
+}
+
+
+.h2Style{
+  font-size:2rem; 
+  font-family:Verdana;
+  color: crimson;
+}
+
+.groupStyle{
+  font-size:1.2rem; 
+  color: rgb(20, 33, 220);
+}
+
+.itemStyle {
+  color: rgb(200, 33, 200);
+}
+
+.invisible{display:none;}

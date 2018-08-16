@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
 import { AdminRoutingModule } from './admin-routing.module';
 import { SharedModule } from '../shared/shared.module';
-
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -16,15 +14,25 @@ import { BreadcrumbComponent } from './layout/breadcrumb/breadcrumb.component';
 import { SettingsComponent } from './layout/settings/settings.component';
 import { PostsComponent } from './posts/posts.component';
 import { AddPostComponent } from './posts/add-post/add-post.component';
-import { CatalogComponent } from './catalog/catalog.component';
 import { CategoryComponent } from './catalog/category/category.component';
 import { AddCategoryComponent } from './catalog/category/add-category/add-category.component';
 import { EditCategoryComponent } from './catalog/category/edit-category/edit-category.component';
 import { DestroyCategoryComponent } from './catalog/category/destroy-category/destroy-category.component';
-import { UsersComponent } from './users/users.component';
-import { AddUserComponent } from './users/add-user/add-user.component';
-import { EditUserComponent } from './users/edit-user/edit-user.component';
-import { CreateProductComponent } from './catalog/create-product/create-product.component';
+
+import { DropZoneDirective } from '../directives';
+
+import { FileSizePipe } from '../pipes/file-size.pipe';
+
+import {
+  GalleryComponent,
+  FormUploadComponent,
+  CatalogComponent,
+  CreateProductComponent,
+  UsersComponent,
+  AddUserComponent,
+  EditUserComponent
+
+  } from './';
 
 @NgModule({
   imports: [
@@ -51,6 +59,12 @@ import { CreateProductComponent } from './catalog/create-product/create-product.
     UsersComponent,
     AddUserComponent,
     EditUserComponent,
-    CreateProductComponent]
+    CreateProductComponent,
+    GalleryComponent,
+    FormUploadComponent,
+    DropZoneDirective,
+    FileSizePipe,
+
+  ]
 })
 export class AdminModule { }

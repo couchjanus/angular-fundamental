@@ -16,7 +16,10 @@ import {
     AddUserComponent,
     EditUserComponent,
     CatalogComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    GalleryComponent,
+    FormUploadComponent,
+
  } from '../../admin';
 
 import { RoleGuard } from '../../guards';
@@ -46,6 +49,8 @@ export const routes: Routes = [
             { path: 'users/edit/:id', component: EditUserComponent },
             { path: 'products', component: CatalogComponent },
             { path: 'products/create', component: CreateProductComponent },
+            { path: 'gallery', component: GalleryComponent },
+            { path: 'uploads', component: FormUploadComponent },
         ]
     },
     {

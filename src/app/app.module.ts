@@ -4,7 +4,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 
+// AngularFire2 Modules
 import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireFunctionsModule } from 'angularfire2/functions';
+
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 
@@ -14,25 +20,24 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared';
 import { BlogModule } from './blog/blog.module';
 import { ShopModule } from './shop/shop.module';
-// import { AdminModule } from './admin/admin.module';
-// import { LoginComponent } from './user';
 
 // Routing
 import { AppRouterModule } from './app-router/app-router.module';
 
-import { AboutComponent } from './about/about.component';
+import { AboutComponent, GalleryComponent } from './';
 import { HomeComponent } from './home/home.component';
-// import { EmailValidatorDirective } from './directives';
-import { AlertService, AuthService, ProductService,
-  ShoppingCartService } from './services';
 
 import { AlertComponent, EmailValidatorDirective } from './directives';
+
+import { AlertService, AuthService, ProductService,
+  ShoppingCartService } from './services';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmailValidatorDirective,
     AboutComponent,
+    GalleryComponent,
     HomeComponent,
     AlertComponent
   ],
@@ -44,6 +49,10 @@ import { AlertComponent, EmailValidatorDirective } from './directives';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule, // for database
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    AngularFireFunctionsModule,
     ShopModule,
     SharedModule,
     JwtModule.forRoot({
@@ -58,7 +67,7 @@ import { AlertComponent, EmailValidatorDirective } from './directives';
     AlertService,
     AuthService,
     ProductService,
-    ShoppingCartService
+    ShoppingCartService,
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
